@@ -5,7 +5,7 @@ const calculate = document.getElementById("calculate");
 const negative = document.getElementById("negative");
 const clear = document.getElementById("clear");
 const bksp = document.getElementById("bksp");
-const point = document.getElementById('point');
+const point = document.getElementById("point");
 
 let numArr = [];
 let operatorArr = [null];
@@ -14,25 +14,24 @@ var secondNum;
 
 results.textContent = 0;
 
-point.addEventListener('click', ()=> {
-   numArr.push('.')
-   console.log(numArr)
-})
+point.addEventListener("click", () => {
+  numArr.push(".");
+  console.log(numArr);
+});
 
-bksp.addEventListener('click',() => {
-   numArr.splice(numArr.length-1,1);
-    let first = "";
-    for (num of numArr) {
-        first += num;
-      }
-      results.textContent = first;
-      firstNum = parseInt(first);
+bksp.addEventListener("click", () => {
+  numArr.splice(numArr.length - 1, 1);
+  let first = "";
+  for (num of numArr) {
+    first += num;
+  }
+  results.textContent = first;
+  firstNum = parseInt(first);
 
-      if(numArr.length==0) {
-        results.textContent = 0;
-      } 
-
-})
+  if (numArr.length == 0) {
+    results.textContent = 0;
+  }
+});
 
 clear.addEventListener("click", () => {
   firstNum = 0;
@@ -49,7 +48,7 @@ negative.addEventListener("click", () => {
   if (operatorArr[0] == null) {
     firstNum = firstNum - firstNum * 2;
     results.textContent = firstNum;
-  } else if (operatorArr[0] !==null && numArr.length>0) {
+  } else if (operatorArr[0] !== null && numArr.length > 0) {
     secondNum = secondNum - secondNum * 2;
     results.textContent = secondNum;
   }
@@ -95,14 +94,12 @@ calculate.addEventListener("click", () => {
   if (typeof result == "number") {
     console.log(firstNum + operatorArr[0] + secondNum + " = " + result);
     results.textContent = result;
-    firstNum = result; 
-    operatorArr[0]=null;
-    while(numArr>0){
-        numArr.pop()
+    firstNum = result;
+    operatorArr[0] = null;
+    while (numArr > 0) {
+      numArr.pop();
     }
-  } 
- 
-
+  }
 });
 
 class Calculator {

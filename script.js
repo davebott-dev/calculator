@@ -15,8 +15,11 @@ var secondNum;
 results.textContent = 0;
 
 point.addEventListener("click", () => {
-  numArr.push(".");
-  console.log(numArr);
+  if(!numArr.includes('.')) {
+    numArr.push(".");
+    console.log(numArr);
+  }
+  
 });
 
 bksp.addEventListener("click", () => {
@@ -57,6 +60,7 @@ negative.addEventListener("click", () => {
 number.forEach((element) => {
   element.addEventListener("click", () => {
     if (operatorArr[0] == null) {
+      if(numArr.length<5) {
       numArr.push(element.id);
       let first = "";
       for (num of numArr) {
@@ -64,7 +68,9 @@ number.forEach((element) => {
       }
       results.textContent = first;
       firstNum = Number(first);
+    }
     } else if (operator[0] !== null) {
+      if(numArr.length<5) {
       numArr.push(element.id);
       let second = "";
       for (num of numArr) {
@@ -72,6 +78,7 @@ number.forEach((element) => {
       }
       results.textContent = second;
       secondNum = Number(second);
+    }
     }
   });
 });
@@ -91,7 +98,7 @@ operator.forEach((element) => {
 calculate.addEventListener("click", () => {
   let TI_182 = new Calculator("TI-182");
   let result = TI_182.calculate(firstNum, operatorArr[0], secondNum);
-  if (typeof result == "number") {
+  if (typeof result == "number" && !numArr.includes('.')) {
     console.log(firstNum + operatorArr[0] + secondNum + " = " + result);
     results.textContent = result;
     firstNum = result;
@@ -99,7 +106,17 @@ calculate.addEventListener("click", () => {
     while (numArr > 0) {
       numArr.pop();
     }
+  }  else if (typeof result == "number" && numArr.includes('.')) {
+    console.log(firstNum + operatorArr[0] + secondNum + " = " + result);
+    results.textContent = result.toFixed(2);
+    firstNum = result.toFixed(2);
+    operatorArr[0] = null;
+    while (numArr > 0) {
+      numArr.pop();
+    }
   }
+
+
 });
 
 class Calculator {

@@ -26,7 +26,7 @@ body {
 
 #results {
     height: 400px;
-    font-size: 10em;
+    font-size: clamp(5vh, 10vw, 9vh);
     color: white;
     display: flex;
     justify-content: end;

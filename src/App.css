@@ -29,6 +29,7 @@ body {
   font-size: clamp(5vh, 10vw, 9vh);
   color: white;
   display: flex;
+  flex-direction: column;
   justify-content: end;
   align-items: end;
   padding-right: 50px;
@@ -41,10 +42,12 @@ body {
   padding: 25px;
   grid-gap: 15px;
   justify-items: center;
-  
-
 }
 
+.operation{
+  font-size: 2rem;
+  color: gray;
+}
 .btn {
   display: flex;
   justify-content: center;
